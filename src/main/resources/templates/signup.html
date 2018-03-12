@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
+
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<header class="navbar navbar-static-top bs-docs-nav" id="top"
+		role="banner">
+		<div class="container">
+			<div class="navbar-header"></div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+	</header>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Login to get API key</h1>
+			<h2 th:text="${status}" th:unless="${status == null}"></h2>
+			<div style="float:left; width: 50%;">
+			<form class="form-inline" th:action="@{/create}" method="POST">
+				<div class="form-group">
+					<div>
+						<input type="text" class="form-control" id="userId" name="userId"
+							placeholder="Create User Name" />
+					</div>
+					<div>
+						<input type="text" class="form-control" id="password"
+							name="password" placeholder="Create Password" />
+					</div>
+
+					<button type="submit" class="btn btn-primary">Sign Up</button>
+					</div>
+			</form>
+			</div>
+			
+			<div style="float:right; width: 50%;">
+			
+			<form class="form-inline" th:action="@{/authenticate}" method="POST">
+				<div class="form-group">
+					<div>
+						<input type="text" class="form-control" id="userId" name="userId"
+							placeholder="Enter User Name" />
+					</div>
+					<div>
+						<input type="text" class="form-control" id="password"
+							name="password" placeholder="Enter Password" />
+					</div>
+
+					<button type="submit" class="btn btn-primary">Login</button>
+					</div>
+			</form>
+			</div>
+			
+			<div style="float:right; width: 50%;">
+			
+			<form class="form-inline" th:action="@{/show}" method="GET">
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">OR Login with Google</button>
+					</div>
+			</form>
+			</div>
+			
+		</div>
+	</div>
+</body>
+</html>
