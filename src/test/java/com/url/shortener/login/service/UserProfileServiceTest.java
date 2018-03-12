@@ -2,16 +2,17 @@ package com.url.shortener.login.service;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import static org.mockito.Mockito.verify;
+
 import com.url.shortener.controller.BaseTest;
 import com.url.shortener.entity.User;
 import com.url.shortener.entity.UserRepository;
+import com.url.shortener.exception.UserUnAuthorizedException;
 
 public class UserProfileServiceTest extends BaseTest{
 	
@@ -21,10 +22,6 @@ public class UserProfileServiceTest extends BaseTest{
 	@Mock
 	private UserRepository userRepository;
 
-    @Before
-    public void setUp() throws Exception {
-    }
-    
     @Test
     public void createUser_savesUserDetailsInDB() throws Exception {
     	User newUser = new User();
@@ -58,6 +55,13 @@ public class UserProfileServiceTest extends BaseTest{
     	verify(userRepository).findByUserIdAndPassword("exampleUser", "***");
     }
     
- 
+    
+    @Test(expected = UserUnAuthorizedException.class)
+    public void authenticate_whenNoUserPresent_throwsException() throws Exception {
+    	User user = new User();
+    	when(userRepository.findByUserIdAndPassword("exampleUser", "***")).thenReturn(null);
+    	userProfileService.authenticate(user);
+    	verify(userRepository).findByUserIdAndPassword("exampleUser", "***");
+    }
     
 }

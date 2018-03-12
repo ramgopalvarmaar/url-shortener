@@ -38,6 +38,7 @@ public class LoginControllerTest extends BaseTest{
     @Before
     public void setUp() throws Exception {
         mockMvc = standaloneSetup(loginController).build();
+        when(userProfileService.createUser(any(User.class))).thenReturn(new User());
     }
     
     @Test
@@ -47,7 +48,9 @@ public class LoginControllerTest extends BaseTest{
     
     @Test
     public void createUser_createsNewUserInDB_returnsToSignUpPageWithSuccessMessage() throws Exception {
+    	
     	when(userProfileService.createUser(any(User.class))).thenReturn(new User());
+    	
         mockMvc.perform(post("/create")
         .param("userId", "exampleUser")
         .param("password", "*****"))
