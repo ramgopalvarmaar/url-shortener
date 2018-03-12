@@ -3,7 +3,6 @@ package com.url.shortener.login.controller;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -48,7 +47,7 @@ public class LoginControllerTest extends BaseTest{
     
     @Test
     public void createUser_createsNewUserInDB_returnsToSignUpPageWithSuccessMessage() throws Exception {
-    	doNothing().when(userProfileService).createUser(any(User.class));
+    	when(userProfileService.createUser(any(User.class))).thenReturn(new User());
         mockMvc.perform(post("/create")
         .param("userId", "exampleUser")
         .param("password", "*****"))
