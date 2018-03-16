@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.url.shortener</groupId>
-	<artifactId>url-shortener</artifactId>
+	<groupId>com.banking.application</groupId>
+	<artifactId>banking-application</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>url-shortener</name>
-	<description>Url-shortener web app</description>
+	<name>banking-application</name>
+	<description>Banking web app</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -20,7 +20,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>com.url.shortener.UrlShortenerApplication</start-class>
+		<start-class>com.banking.application.BankingApplication</start-class>
 		<java.version>1.8</java.version>
 	</properties>
 
